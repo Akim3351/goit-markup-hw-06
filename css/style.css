@@ -1,15 +1,19 @@
 :root {
   --black: rgb(33, 33, 33);
+  --black-op10: rgba(33, 33, 33, 0.1);
+  --black-op20: rgba(33, 33, 33, 0.2);
   --blue: rgb(33, 150, 243);
   --white-op60: rgba(255, 255, 255, 0.6);
+  --white-op30: rgba(255, 255, 255, 0.3);
   --white-op10: rgba(255, 255, 255, 0.1);
   --grey: rgb(117, 117, 117);
+  --grey-op50: rgba(117, 117, 117, 0.5);
+  --grey-op80: rgba(47, 48, 58, 0.8);
   --light-grey: rgb(245, 244, 250);
   --grey-gradient: rgba(47, 48, 58, 0.4);
   --graphite: rgba(48, 48, 48, 1);
   --white: rgb(255, 255, 255);
   --dark-blue: rgb(47, 48, 58);
-  --grey-op80: rgba(47, 48, 58, 0.8);
   --card-set-gap: 30px;
   --animtrans: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -816,7 +820,8 @@ body {
   transition: color var(--animtrans);
 }
 
-.joinus {
+.joinus,
+.subscribeus {
   margin-top: 72px;
   text-transform: uppercase;
   font-weight: 700;
@@ -857,6 +862,61 @@ body {
   transition: background-color var(--animtrans);
 }
 
+.subscribeform {
+  display: inline-block;
+}
+
+.subscribewrapper {
+  display: flex;
+  align-items: flex-end;
+  margin-left: 93px;
+}
+
+.subscribeinput{
+  width: 358px;
+  height: 50px;
+  padding: 15px;
+  background-color: var(--dark-blue);
+  border: 1px solid var(--white-op30);
+  color: var(--white-op60);
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  margin-top: 20px;
+  margin-right: 12px;
+}
+
+.subscribebtn {
+  display: flex;
+  width: 200px;
+  height: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 29px;
+  border: none;
+  vertical-align: baseline;
+  border-radius: 4px;
+  background-color: var(--blue);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.subscribebtn p {
+  line-height: 1.87;
+  vertical-align: middle;
+  fill: var(--blue);
+}
+
+.icon-subscribe {
+  height: 30px;
+  width: 30px;
+  margin-left: 10px;
+  fill: var(--white);
+  
+}
+
 /* modal window */
 
 .backdrop {
@@ -881,12 +941,14 @@ body {
 }
 
 .backdrop.is-hidden .modal {
-  transform: translate(-50%, -50%) scale(1.5);
+  transform: translate(-50%, -50%) scale(0.9);
   transition: transrorm var(--animtrans);
 }
 
 .modal {
   position: absolute;
+  display: flex;
+  flex-direction: column;
   min-height: 581px;
   min-width: 528px;
   top: 50%;
@@ -900,13 +962,161 @@ body {
 .closemodalbtn {
   width: 30px;
   height: 30px;
-  margin-left: 490px;
-  border: 1px solid var(--grey);
+  margin: 8px 8px 0 auto;
+  border: 1px solid var(--black-op10);
   border-radius: 50%;
+  background-color: var(--white);
+  transition: color var(--animtrans);
 }
 
-.icon-vector {
+.icon-closemodal {
   height: 11px;
   width: 11px;
   fill: currentColor;
+}
+
+.closemodalbtn:hover,
+.closemodalbtn:focus {
+  color: var(--blue);
+  cursor: pointer;
+  transition: color var(--animtrans);
+}
+
+.modalformwrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 40px 20px 40px;
+}
+
+.modalheader {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+  color: var(--black);
+  margin-bottom: 12px;
+}
+
+.modalform {
+  display: inherit;
+  flex-direction: inherit;
+}
+
+.modalform > label {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.166;
+  text-align: left;
+  color: var(--grey);
+  margin-top: 10px;
+}
+
+.input-wrapper {
+  position: relative;
+  margin-top: 4px;
+}
+
+.icon-input {
+  position: absolute;
+  left: 0;
+  margin-left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  fill: currentColor;
+  transition: fill var(--animtrans);
+}
+
+.icon-input > svg {
+  height: 12px;
+}
+
+.input-wrapper > input,
+.modalform > textarea {
+  width: 100%;
+  border: solid 1px var(--black-op20);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.166;
+  letter-spacing: 0.01em;
+  text-align: left;
+  outline: none;
+}
+
+.input-wrapper > input {
+  height: 40px;
+  padding-left: 35px;
+}
+
+.input-wrapper > input:focus,
+.input-wrapper > input:hover,
+.input-wrapper > input:active,
+.policycheck > input:focus,
+.policycheck > input:hover,
+.policycheck > input:active,
+.modalform > textarea:focus,
+.modalform > textarea:active,
+.modalform > textarea:hover {
+  border-color: var(--blue);
+  cursor: pointer;
+  transition: border-color var(--animtrans);
+}
+
+.input-wrapper:hover .icon-input,
+.input-wrapper:focus .icon-input,
+.input-wrapper:focus-within .icon-input {
+  fill: var(--blue);
+  transition: fill var(--animtrans);
+}
+
+.modaltextarea {
+  resize: none;
+  width: 100%;
+  height: 120px;
+  padding: 12px 16px 12px 16px;
+}
+
+.policycheck {
+  display: flex;
+  vertical-align: baseline;
+  margin: 20px auto 0 auto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.714;
+  text-align: left;
+  color: var(--grey);
+}
+
+.policycheck > input {
+  margin-right: 9px;
+  width: 16px;
+  height: 15px;
+}
+
+.modallink {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.modalsubmitbtn {
+  box-sizing: border-box;  
+  width: 200px;
+  height: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  border: none;
+  vertical-align: baseline;
+  border-radius: 4px;
+  background-color: var(--blue);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.modalsubmitbtn:hover,
+.modalsubmitbtn:focus {
+  cursor: pointer;
 }
