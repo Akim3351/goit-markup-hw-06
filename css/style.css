@@ -942,7 +942,7 @@ body {
 
 .backdrop.is-hidden .modal {
   transform: translate(-50%, -50%) scale(0.9);
-  transition: transrorm var(--animtrans);
+  transition: transform var(--animtrans);
 }
 
 .modal {
